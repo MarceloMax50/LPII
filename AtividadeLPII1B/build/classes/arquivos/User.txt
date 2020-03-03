@@ -1,0 +1,3 @@
+userId||Nome||Perfil
+marcelo||Marcelo Max||Gerente
+jones||Jon Jones||Funcionario
