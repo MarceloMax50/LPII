@@ -17,11 +17,16 @@ import java.util.List;
  */
 public class ProdutoController {
 
-    public void getCardapio() throws Exception {
+    public String getCardapio() throws Exception {
         Arquivos file = new Arquivos();
         String fileName = "Produto.txt";
         List<String[]> produtoList = file.ReadFile(fileName);
-        List<String> cardapio = new ArrayList<String>();
+        String cardapio = "";
+        for (int i = 0; i < produtoList.size(); i++) {
+
+            cardapio += produtoList.get(i)[0] + " - " + produtoList.get(i)[1] + " - R$ " + produtoList.get(i)[2] + "\r\n";
+        }
+        return cardapio;
     }
 
     public int getProductId() throws Exception {

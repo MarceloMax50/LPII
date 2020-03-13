@@ -2,6 +2,7 @@ package UI;
 
 import Controller.ClienteController;
 import Controller.LoginController;
+import Controller.PedidosController;
 import Controller.ProdutoController;
 import Controller.UserController;
 import Model.Cliente;
@@ -73,6 +74,7 @@ public class Menu {
             }
             break;
             case 2: {
+                cadastroPedidos();
                 Cliente novo = cadastroClientes();
                 ClienteController exe = new ClienteController();
                 exe.CadastraCliente(novo);
@@ -130,9 +132,23 @@ public class Menu {
 
     }
 
-    private void cadastroPedidos() {
-        displayHeader("Cadastro de Pedidos:");
-        System.out.println("1) Cadastrar produtos");
+    private void cadastroPedidos() throws Exception {
+        ProdutoController pro = new ProdutoController();
+        displayHeader("Pedidos:");
+        System.out.println("Escolha o(s) sabor(es):");
+         System.out.println(pro.getCardapio());
+         Scanner keyboard = new Scanner(System.in);
+        String newClient = keyboard.nextLine();
+        
+         PedidosController c = new PedidosController();
+        displayHeader("Cadastro de Pedido");
+        System.out.println("Cadastre  o nome do cliente:");
+        
+        int id = c.getClientId();
+        
+//      String id, List<Pizza> produtos, Cliente clienteP, User atendente
+//        Produto cli = new Produto(id, newClient);;;
+//        return cli
     }
 
     private Cliente cadastroClientes() throws Exception {

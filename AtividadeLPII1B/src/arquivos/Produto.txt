@@ -1,4 +1,6 @@
+Codigo||Sabor||Preço
 1||calabresa||30
 2||coco||10
 3||queijo||20
 4||5 queijos||30
+5||Queijo||23,99
