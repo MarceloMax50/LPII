@@ -1,3 +1,6 @@
 userId||Nome||Perfil
 marcelo||Marcelo Max||Gerente
 jones||Jon Jones||Funcionario
+ramelitalo||rameli||Vendedor
+luca||lucas||Vendedor
+brunoB||Bruno||Vendedor

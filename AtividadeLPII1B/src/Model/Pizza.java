@@ -35,7 +35,7 @@ public class Pizza {
     public String getName(){
         return sabor;
     }
-    public String getSenha(){
+    public String getPreco(){
         return preco;
     }
 }

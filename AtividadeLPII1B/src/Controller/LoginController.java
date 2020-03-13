@@ -9,7 +9,6 @@ import DAO.Arquivos;
 import Model.Login;
 import Model.User;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,5 +64,33 @@ public class LoginController {
             throw e;
         }
 
+    }
+
+    public String CadastraLogin(Login log) throws Exception {
+        Arquivos file = new Arquivos();
+        String fileName = "Login.txt";
+
+        try {
+            if ((log.getUsuario() != null) && (log.getUsuario() != "")) {
+
+                List<String[]> loginList = file.ReadFile(fileName);
+                for (int i = 0; i < loginList.size(); i++) {
+
+                    if (loginList.get(i)[0].equals(log.getUsuario())) {
+                        return "Esse login de usuário já existe. Por favor escolha outro.";
+                    }
+                }
+                String novoLogin = log.getUsuario() + "||" + log.getSenha();
+
+                file.WriteFile(fileName, novoLogin);
+                return "Funcionário cadastrado!";
+
+            } else {
+                return "Usuário não pode ser nulo.";
+            }
+        } catch (IOException e) {
+            System.out.println("Erro: " + e);
+            throw e;
+        }
     }
 }

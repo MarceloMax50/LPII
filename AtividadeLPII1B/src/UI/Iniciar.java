@@ -6,10 +6,9 @@
 package UI;
 
 import Controller.LoginController;
-import DAO.Arquivos;
 import Model.Login;
 import Model.User;
-import java.util.List;
+
 
 /**
  *
@@ -28,13 +27,13 @@ public class Iniciar {
             Login log = new Login(user, senha);
 
             if (controlLog.validaLogin(log)) {
-                System.out.println("Validado....");
+                System.out.println("Validando...");
                 User usuario = controlLog.getPerfil(log);
                 if (usuario.getPerfil().equals("Gerente")) {
                     MenuGerente menuG = new MenuGerente();
                     menuG.printHeader();
                     menuG.printMenu();
-                    menuG.getUserMenu();
+                    menuG.performAction(menuG.getUserMenu());
                 } else {
                     MenuFuncionario menuF = new MenuFuncionario();
                     menuF.printHeader();
