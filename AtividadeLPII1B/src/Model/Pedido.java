@@ -5,7 +5,6 @@
  */
 package Model;
 
-import java.util.List;
 
 /**
  *
@@ -13,47 +12,57 @@ import java.util.List;
  */
 public class Pedido {
 
-    private String id;
-    private List<Pizza> produtos;
-    private Cliente clienteP;
-    private User atendente;
+    private int id;
+    private String produtos;
+    private String clienteP;
+    private String atendente;
+    private double total;
 
-    public Pedido(String id, List<Pizza> produtos, Cliente clienteP, User atendente) {
+    public Pedido(int id, String produtos, String clienteP, String atendente, double total) {
         this.id = id;
         this.produtos = produtos;
         this.clienteP = clienteP;
         this.atendente = atendente;
+        this.total = total;
     }
 
-    public String getId() {
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public List<Pizza> getProdutos() {
+    public String getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<Pizza> produtos) {
+    public void setProdutos(String produtos) {
         this.produtos = produtos;
     }
 
-    public Cliente getClienteP() {
+    public String getClienteP() {
         return clienteP;
     }
 
-    public void setClienteP(Cliente clienteP) {
+    public void setClienteP(String clienteP) {
         this.clienteP = clienteP;
     }
 
-    public User getAtendente() {
+    public String getAtendente() {
         return atendente;
     }
 
-    public void setAtendente(User atendente) {
+    public void setAtendente(String atendente) {
         this.atendente = atendente;
     }
 

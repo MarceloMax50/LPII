@@ -29,6 +29,12 @@ public class ProdutoController {
         return cardapio;
     }
 
+    public List<String[]> getProductList() throws Exception {
+        Arquivos file = new Arquivos();
+        String fileName = "Produto.txt";
+        return file.ReadFile(fileName);
+    }
+
     public int getProductId() throws Exception {
         Arquivos file = new Arquivos();
         String fileName = "Produto.txt";

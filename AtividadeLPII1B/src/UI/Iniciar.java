@@ -31,12 +31,12 @@ public class Iniciar {
                 User usuario = controlLog.getPerfil(log);
                 if (usuario.getPerfil().equals("Gerente")) {
                     MenuGerente menuG = new MenuGerente();
-                    menuG.printHeader();
+                    menuG.printHeader(log.getUsuario());
                     menuG.printMenu();
                     menuG.performAction(menuG.getUserMenu());
                 } else {
                     MenuFuncionario menuF = new MenuFuncionario();
-                    menuF.printHeader();
+                    menuF.printHeader(log.getUsuario());
                     menuF.printMenu();
                     menuF.getUserMenu();
                 }

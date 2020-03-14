@@ -10,15 +10,17 @@ import Model.Login;
 import Model.Pedido;
 import Model.Pizza;
 import Model.User;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
+    String usuariON;
     //Instance Variables
     boolean exit;
 
     public void runMenu() throws Exception {
-        printHeader();
+        printHeader("");
         while (!exit) {
             printMenu();
             int resposta = getUserMenu();
@@ -26,11 +28,12 @@ public class Menu {
         }
     }
 
-    public void printHeader() {
+    public void printHeader(String u) {
         System.out.println("+-----------------------------------+");
         System.out.println("|          Bem vindo à N1           |");
         System.out.println("|             Pizzaria              |");
         System.out.println("+-----------------------------------+");
+        usuariON = u;
     }
 
     public void printMenu() {
@@ -74,11 +77,14 @@ public class Menu {
             }
             break;
             case 2: {
-                cadastroPedidos();
-                Cliente novo = cadastroClientes();
-                ClienteController exe = new ClienteController();
-                exe.CadastraCliente(novo);
+
+                Pedido novo = cadastroPedidos();
+                PedidosController exe = new PedidosController();
+                exe.Cadastrapedido(novo);
                 System.out.println("Pedido Cadastrado!");
+                //Print pedido realizado
+                System.out.println(exe.getPedido());
+                
                 printMenu();
             }
             case 3: {
@@ -132,23 +138,45 @@ public class Menu {
 
     }
 
-    private void cadastroPedidos() throws Exception {
+    private Pedido cadastroPedidos() throws Exception {
         ProdutoController pro = new ProdutoController();
+        PedidosController p = new PedidosController();
+        ClienteController c = new ClienteController();
+
+        List<String[]> productList = pro.getProductList();
+        String pedidoStr = "";
         displayHeader("Pedidos:");
         System.out.println("Escolha o(s) sabor(es):");
-         System.out.println(pro.getCardapio());
-         Scanner keyboard = new Scanner(System.in);
-        String newClient = keyboard.nextLine();
-        
-         PedidosController c = new PedidosController();
-        displayHeader("Cadastro de Pedido");
-        System.out.println("Cadastre  o nome do cliente:");
-        
-        int id = c.getClientId();
-        
-//      String id, List<Pizza> produtos, Cliente clienteP, User atendente
-//        Produto cli = new Produto(id, newClient);;;
-//        return cli
+        System.out.println(pro.getCardapio());
+        Scanner keyboard = new Scanner(System.in);
+        double total = 0;
+        String resposta = "";
+        //Get produtos
+        do {
+            System.out.println("Digite o código da pizza ou 'c' para continuar.");
+            resposta = keyboard.next();
+            if (!resposta.equals("c")) {
+                for (int i = 0; i < productList.size(); i++) {
+
+                    if (productList.get(i)[0].equals(resposta)) {
+                        pedidoStr += productList.get(i)[0] + ";" + productList.get(i)[1] + ";" + productList.get(i)[2] + "-";
+                        total += Double.parseDouble(productList.get(i)[2]);
+                    }
+                }
+            }
+
+        } while (!resposta.equals("c"));
+        //Get Cliente
+        System.out.println("Digite o código do cliente");
+        int resp = Integer.parseInt(keyboard.next());
+        Cliente cli = c.getClientById(resp);
+
+        //Get Id Pedido
+        int id = p.getPedidoId();
+        //(int id, String produtos, String clienteP, String atendente, double total)
+        Pedido ped = new Pedido(id, pedidoStr, cli.getNome(), usuariON, total);
+        return ped;
+
     }
 
     private Cliente cadastroClientes() throws Exception {

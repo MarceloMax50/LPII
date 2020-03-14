@@ -25,6 +25,20 @@ public class ClienteController {
         return soma;
     }
 
+    public Cliente getClientById(int id) throws Exception {
+        Arquivos file = new Arquivos();
+        String fileName = "Cliente.txt";
+        List<String[]> clienteList = file.ReadFile(fileName);
+        for (int i = 1; i < clienteList.size(); i++) {
+            if (clienteList.get(i)[0].equals(Integer.toString(id))) {
+                Cliente c = new Cliente(Integer.parseInt(clienteList.get(i)[0]), clienteList.get(i)[1]);
+                return c;
+            } else {
+            }
+        }
+        return null;
+    }
+
     public String CadastraCliente(Cliente cliente) throws Exception {
         Arquivos file = new Arquivos();
         String fileName = "Cliente.txt";
