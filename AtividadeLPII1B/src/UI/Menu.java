@@ -5,6 +5,7 @@ import Controller.LoginController;
 import Controller.PedidosController;
 import Controller.ProdutoController;
 import Controller.UserController;
+import Controller.logsControler;
 import Model.Cliente;
 import Model.Login;
 import Model.Pedido;
@@ -69,11 +70,15 @@ public class Menu {
                 System.exit(0);
                 break;
             case 1: {
+
                 Pizza nova = cadastroProdutos();
                 ProdutoController exe = new ProdutoController();
                 exe.CadastraPizza(nova);
                 System.out.println("Pizza Cadastrada!");
+                logsControler l = new logsControler();
+                l.CadastraLogin(usuariON + " cadastrou um novo produto!");
                 printMenu();
+
             }
             break;
             case 2: {
@@ -84,7 +89,9 @@ public class Menu {
                 System.out.println("Pedido Cadastrado!");
                 //Print pedido realizado
                 System.out.println(exe.getPedido());
-                
+
+                logsControler l = new logsControler();
+                l.CadastraLogin(usuariON + " cadastrou um novo pedido!");
                 printMenu();
             }
             case 3: {
@@ -92,6 +99,9 @@ public class Menu {
                 ClienteController exe = new ClienteController();
                 exe.CadastraCliente(novo);
                 System.out.println("Cliente Cadastrado!");
+                
+                logsControler l = new logsControler();
+                l.CadastraLogin(usuariON + " cadastrou um novo cliente!");
                 printMenu();
             }
             case 4: {
@@ -103,6 +113,10 @@ public class Menu {
                 Login nova = cadastroSenha(novo);
                 LoginController s = new LoginController();
                 s.CadastraLogin(nova);
+                
+                logsControler l = new logsControler();
+                l.CadastraLogin(usuariON + " cadastrou um novo funcionário!");
+                printMenu();
             }
             default:
                 System.out.println("Erro desconhecido.");
