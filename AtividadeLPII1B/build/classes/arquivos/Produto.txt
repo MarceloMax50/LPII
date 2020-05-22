@@ -4,3 +4,10 @@ Codigo||Sabor||Preço
 3||queijo||20
 4||5 queijos||30
 5||Queijo||23,99
+6||quejo||99
+7||mortadela||29
+8||baiana2||30
+9||portuga||30
+10||politana||25
+11||lolotiti||10
+12||porpetinha||40

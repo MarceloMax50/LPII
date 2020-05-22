@@ -2,21 +2,24 @@ package UI;
 
 import Controller.ClienteController;
 import Controller.LoginController;
+import Controller.LogsController;
 import Controller.PedidosController;
 import Controller.ProdutoController;
 import Controller.UserController;
-import Controller.logsControler;
 import Model.Cliente;
 import Model.Login;
+import Model.Logs;
 import Model.Pedido;
 import Model.Pizza;
 import Model.User;
 import java.util.List;
 import java.util.Scanner;
+import Threads.ThreadGestaoMenssagensAuditoria;
 
 public class Menu {
 
     String usuariON;
+
     //Instance Variables
     boolean exit;
 
@@ -50,7 +53,7 @@ public class Menu {
         Scanner keyboard = new Scanner(System.in);
         int resposta = -1;
         do {
-            System.out.print("Digite a opção: ");
+            System.out.println("Digite a opção: ");
             try {
                 resposta = Integer.parseInt(keyboard.nextLine());
             } catch (NumberFormatException e) {
@@ -75,10 +78,11 @@ public class Menu {
                 ProdutoController exe = new ProdutoController();
                 exe.CadastraPizza(nova);
                 System.out.println("Pizza Cadastrada!");
-                logsControler l = new logsControler();
-                l.CadastraLogin(usuariON + " cadastrou um novo produto!");
-                printMenu();
 
+                String strLOG = usuariON + " cadastrou um novo produto!";
+                printMenu();
+                ThreadGestaoMenssagensAuditoria thr = new ThreadGestaoMenssagensAuditoria(strLOG);
+        
             }
             break;
             case 2: {
@@ -90,19 +94,21 @@ public class Menu {
                 //Print pedido realizado
                 System.out.println(exe.getPedido());
 
-                logsControler l = new logsControler();
-                l.CadastraLogin(usuariON + " cadastrou um novo pedido!");
+                String strLOG = usuariON + " cadastrou um novo pedido!";
                 printMenu();
+                ThreadGestaoMenssagensAuditoria thr = new ThreadGestaoMenssagensAuditoria(strLOG);
+        
             }
             case 3: {
                 Cliente novo = cadastroClientes();
                 ClienteController exe = new ClienteController();
                 exe.CadastraCliente(novo);
                 System.out.println("Cliente Cadastrado!");
-                
-                logsControler l = new logsControler();
-                l.CadastraLogin(usuariON + " cadastrou um novo cliente!");
+
+                String strLOG = usuariON + " cadastrou um novo cliente!";
                 printMenu();
+                ThreadGestaoMenssagensAuditoria thr = new ThreadGestaoMenssagensAuditoria(strLOG);
+        
             }
             case 4: {
                 User novo = cadastroFuncionario();
@@ -113,10 +119,11 @@ public class Menu {
                 Login nova = cadastroSenha(novo);
                 LoginController s = new LoginController();
                 s.CadastraLogin(nova);
-                
-                logsControler l = new logsControler();
-                l.CadastraLogin(usuariON + " cadastrou um novo funcionário!");
+
+               String strLOG = usuariON + " cadastrou um novo funcionário!";
                 printMenu();
+                ThreadGestaoMenssagensAuditoria thr = new ThreadGestaoMenssagensAuditoria(strLOG);
+        
             }
             default:
                 System.out.println("Erro desconhecido.");

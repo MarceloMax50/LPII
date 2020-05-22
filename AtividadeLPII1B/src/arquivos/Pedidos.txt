@@ -1,3 +1,5 @@
 0||produtoId;produtoNome;Preço-||cliente||atendente
 1||1;calabresa;30-2;coco;10-3;queijo;20-||Luiz||marcelo||10
 2||4;5 queijos;30-2;coco;10-||Bilena||marcelo||40.0
+3||1;calabresa;30-||Silas||marcelo||30.0
+4||2;coco;10-3;queijo;20-6;quejo;99-||Silas||marcelo||129.0

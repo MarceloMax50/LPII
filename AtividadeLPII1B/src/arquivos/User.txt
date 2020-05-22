@@ -4,3 +4,8 @@ jones||Jon Jones||Funcionario
 ramelitalo||rameli||Vendedor
 luca||lucas||Vendedor
 brunoB||Bruno||Vendedor
+lop44||lorato||Vendedor
+will22||will||Vendedor
+kokoloko||funcionario1||Gerente
+lopopo||j�o||Vendedor
+mol009||molega||Vendedor

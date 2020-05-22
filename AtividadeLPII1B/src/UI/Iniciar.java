@@ -9,7 +9,6 @@ import Controller.LoginController;
 import Model.Login;
 import Model.User;
 
-
 /**
  *
  * @author Usuário
@@ -20,15 +19,16 @@ public class Iniciar {
         //Lança o login
         LoginController controlLog = new LoginController();
         boolean aux = true;
-        while (aux) {
-            MenuLogin menuL = new MenuLogin();
-            String user = menuL.enterUser();
-            String senha = menuL.enterSenha();
-            Login log = new Login(user, senha);
 
-            if (controlLog.validaLogin(log)) {
-                System.out.println("Validando...");
-                User usuario = controlLog.getPerfil(log);
+        MenuLogin menuL = new MenuLogin();
+        String user = menuL.enterUser();
+        String senha = menuL.enterSenha();
+        Login log = new Login(user, senha);
+
+        if (controlLog.validaLogin(log)) {
+            System.out.println("Validando...");
+            User usuario = controlLog.getPerfil(log);
+            while (aux) {
                 if (usuario.getPerfil().equals("Gerente")) {
                     MenuGerente menuG = new MenuGerente();
                     menuG.printHeader(log.getUsuario());
@@ -40,12 +40,9 @@ public class Iniciar {
                     menuF.printMenu();
                     menuF.getUserMenu();
                 }
-
-                aux = false;
-            } else {
-                System.out.println("Usuário ou senha inválidos");
             }
+        } else {
+            System.out.println("Usuário ou senha inválidos");
         }
     }
-
 }

@@ -1,1 +1,10 @@
-
+2020/05/21 21:15:09||marcelo cadastrou um novo produto
+2020/05/21 21:15:47||marcelo cadastrou um novo pedido
+2020/05/21 21:16:11||marcelo cadastrou um novo cliente
+2020/05/21 21:16:42||marcelo cadastrou um novo funcionário
+2020/05/21 22:13:29||marcelo cadastrou um novo produto!
+2020/05/21 22:14:39||marcelo cadastrou um novo cliente!
+2020/05/21 22:14:59||marcelo cadastrou um novo funcionário!
+2020/05/21 22:17:41||marcelo cadastrou um novo funcionário!
+2020/05/21 22:24:36||marcelo cadastrou um novo produto!
+2020/05/21 22:25:29||marcelo cadastrou um novo produto!
